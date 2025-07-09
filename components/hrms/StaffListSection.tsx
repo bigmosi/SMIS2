@@ -127,7 +127,7 @@ export default function StaffListSection() {
           </DialogContent>
         </Dialog>
         <div className="overflow-x-auto mt-4">
-          <table className="w-full text-sm">
+          <table className="w-full text-sm min-w-[700px]">
             <thead>
               <tr className="border-b">
                 <th className="text-left p-3 font-medium">Name</th>

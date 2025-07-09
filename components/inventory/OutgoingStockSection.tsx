@@ -50,28 +50,30 @@ export default function OutgoingStockSection() {
             </DialogContent>
           </Dialog>
         </div>
-        <table className="w-full text-sm mb-4">
-          <thead>
-            <tr className="border-b">
-              <th className="text-left p-2 font-medium">Item</th>
-              <th className="text-left p-2 font-medium">Quantity</th>
-              <th className="text-left p-2 font-medium">Recipient</th>
-              <th className="text-left p-2 font-medium">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {outgoing.map((o, idx) => (
-              <tr key={idx} className="border-b">
-                <td className="p-2">{o.item}</td>
-                <td className="p-2">{o.quantity}</td>
-                <td className="p-2">{o.recipient}</td>
-                <td className="p-2">
-                  <Button size="sm" variant="destructive" onClick={() => handleDelete(idx)}>Delete</Button>
-                </td>
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm mb-4 min-w-[500px]">
+            <thead>
+              <tr className="border-b">
+                <th className="text-left p-2 font-medium">Item</th>
+                <th className="text-left p-2 font-medium">Quantity</th>
+                <th className="text-left p-2 font-medium">Recipient</th>
+                <th className="text-left p-2 font-medium">Actions</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {outgoing.map((o, idx) => (
+                <tr key={idx} className="border-b">
+                  <td className="p-2">{o.item}</td>
+                  <td className="p-2">{o.quantity}</td>
+                  <td className="p-2">{o.recipient}</td>
+                  <td className="p-2">
+                    <Button size="sm" variant="destructive" onClick={() => handleDelete(idx)}>Delete</Button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </CardContent>
     </Card>
   );

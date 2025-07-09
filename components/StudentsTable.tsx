@@ -19,29 +19,31 @@ const demoStudents = [
 
 export default function StudentsTable() {
   return (
-    <Table>
-      <TableHeader>
-        <TableRow>
-          <TableHead>Name</TableHead>
-          <TableHead>Class</TableHead>
-          <TableHead>Age</TableHead>
-          <TableHead>Gender</TableHead>
-          <TableHead>Actions</TableHead>
-        </TableRow>
-      </TableHeader>
-      <TableBody>
-        {demoStudents.map((student, idx) => (
-          <TableRow key={idx}>
-            <TableCell>{student.name}</TableCell>
-            <TableCell>{student.class}</TableCell>
-            <TableCell>{student.age}</TableCell>
-            <TableCell>{student.gender}</TableCell>
-            <TableCell>
-              <Button size="sm" variant="outline">View</Button>
-            </TableCell>
+    <div className="overflow-x-auto">
+      <Table className="min-w-[600px]">
+        <TableHeader>
+          <TableRow>
+            <TableHead>Name</TableHead>
+            <TableHead>Class</TableHead>
+            <TableHead>Age</TableHead>
+            <TableHead>Gender</TableHead>
+            <TableHead>Actions</TableHead>
           </TableRow>
-        ))}
-      </TableBody>
-    </Table>
+        </TableHeader>
+        <TableBody>
+          {demoStudents.map((student, idx) => (
+            <TableRow key={idx}>
+              <TableCell>{student.name}</TableCell>
+              <TableCell>{student.class}</TableCell>
+              <TableCell>{student.age}</TableCell>
+              <TableCell>{student.gender}</TableCell>
+              <TableCell>
+                <Button size="sm" variant="outline">View</Button>
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </div>
   );
 } 

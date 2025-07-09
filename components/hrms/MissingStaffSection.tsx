@@ -23,7 +23,7 @@ export default function MissingStaffSection() {
         <CardDescription>Automatically search and add missing staff to payroll.</CardDescription>
       </CardHeader>
       <CardContent>
-        <table className="w-full text-sm mb-4">
+        <table className="w-full text-sm mb-4 min-w-[500px]">
           <thead>
             <tr className="border-b">
               <th className="text-left p-2 font-medium">Name</th>

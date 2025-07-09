@@ -23,26 +23,28 @@ export default function AssetMovementReportsSection() {
         <CardDescription>Generate and download asset movement reports.</CardDescription>
       </CardHeader>
       <CardContent>
-        <table className="w-full text-sm mb-4">
-          <thead>
-            <tr className="border-b">
-              <th className="text-left p-2 font-medium">Asset</th>
-              <th className="text-left p-2 font-medium">From</th>
-              <th className="text-left p-2 font-medium">To</th>
-              <th className="text-left p-2 font-medium">Date</th>
-            </tr>
-          </thead>
-          <tbody>
-            {demoMovements.map((m, idx) => (
-              <tr key={idx} className="border-b">
-                <td className="p-2">{m.asset}</td>
-                <td className="p-2">{m.from}</td>
-                <td className="p-2">{m.to}</td>
-                <td className="p-2">{m.date}</td>
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm mb-4 min-w-[600px]">
+            <thead>
+              <tr className="border-b">
+                <th className="text-left p-2 font-medium">Asset</th>
+                <th className="text-left p-2 font-medium">From</th>
+                <th className="text-left p-2 font-medium">To</th>
+                <th className="text-left p-2 font-medium">Date</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {demoMovements.map((m, idx) => (
+                <tr key={idx} className="border-b">
+                  <td className="p-2">{m.asset}</td>
+                  <td className="p-2">{m.from}</td>
+                  <td className="p-2">{m.to}</td>
+                  <td className="p-2">{m.date}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
         <Button onClick={handleDownload} disabled={downloading} variant="outline">
           <Download className="h-4 w-4 mr-2" />
           {downloading ? 'Downloading...' : 'Download Report'}

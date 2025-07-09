@@ -48,7 +48,8 @@ export default function AssetLocationsSection() {
             </DialogContent>
           </Dialog>
         </div>
-        <table className="w-full text-sm mb-4">
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm mb-4 min-w-[500px]">
           <thead>
             <tr className="border-b">
               <th className="text-left p-2 font-medium">Name</th>
@@ -66,6 +67,7 @@ export default function AssetLocationsSection() {
             ))}
           </tbody>
         </table>
+        </div>
       </CardContent>
     </Card>
   );

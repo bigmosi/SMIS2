@@ -59,32 +59,34 @@ export default function AssetsSection() {
             </DialogContent>
           </Dialog>
         </div>
-        <table className="w-full text-sm mb-4">
-          <thead>
-            <tr className="border-b">
-              <th className="text-left p-2 font-medium">Name</th>
-              <th className="text-left p-2 font-medium">Category</th>
-              <th className="text-left p-2 font-medium">Location</th>
-              <th className="text-left p-2 font-medium">Cost</th>
-              <th className="text-left p-2 font-medium">Purchase Date</th>
-              <th className="text-left p-2 font-medium">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {assets.map((asset, idx) => (
-              <tr key={idx} className="border-b">
-                <td className="p-2">{asset.name}</td>
-                <td className="p-2">{asset.category}</td>
-                <td className="p-2">{asset.location}</td>
-                <td className="p-2">{asset.cost.toLocaleString()}</td>
-                <td className="p-2">{asset.purchaseDate}</td>
-                <td className="p-2">
-                  <Button size="sm" variant="destructive" onClick={() => handleDelete(idx)}>Delete</Button>
-                </td>
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm mb-4 min-w-[700px]">
+            <thead>
+              <tr className="border-b">
+                <th className="text-left p-2 font-medium">Name</th>
+                <th className="text-left p-2 font-medium">Category</th>
+                <th className="text-left p-2 font-medium">Location</th>
+                <th className="text-left p-2 font-medium">Cost</th>
+                <th className="text-left p-2 font-medium">Purchase Date</th>
+                <th className="text-left p-2 font-medium">Actions</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {assets.map((asset, idx) => (
+                <tr key={idx} className="border-b">
+                  <td className="p-2">{asset.name}</td>
+                  <td className="p-2">{asset.category}</td>
+                  <td className="p-2">{asset.location}</td>
+                  <td className="p-2">{asset.cost.toLocaleString()}</td>
+                  <td className="p-2">{asset.purchaseDate}</td>
+                  <td className="p-2">
+                    <Button size="sm" variant="destructive" onClick={() => handleDelete(idx)}>Delete</Button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </CardContent>
     </Card>
   );

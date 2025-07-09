@@ -17,7 +17,7 @@ export default function StudentsSection() {
       </CardHeader>
       <CardContent>
         <div className="overflow-x-auto">
-          <table className="w-full text-sm">
+          <table className="w-full text-sm min-w-[600px]">
             <thead>
               <tr className="border-b">
                 <th className="text-left p-4 font-medium">Name</th>

@@ -49,26 +49,28 @@ export default function InventoryItemsSection() {
             </DialogContent>
           </Dialog>
         </div>
-        <table className="w-full text-sm mb-4">
-          <thead>
-            <tr className="border-b">
-              <th className="text-left p-2 font-medium">Name</th>
-              <th className="text-left p-2 font-medium">Price</th>
-              <th className="text-left p-2 font-medium">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {items.map((item, idx) => (
-              <tr key={idx} className="border-b">
-                <td className="p-2">{item.name}</td>
-                <td className="p-2">{item.price.toLocaleString()}</td>
-                <td className="p-2">
-                  <Button size="sm" variant="destructive" onClick={() => handleDelete(idx)}>Delete</Button>
-                </td>
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm mb-4 min-w-[500px]">
+            <thead>
+              <tr className="border-b">
+                <th className="text-left p-2 font-medium">Name</th>
+                <th className="text-left p-2 font-medium">Price</th>
+                <th className="text-left p-2 font-medium">Actions</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {items.map((item, idx) => (
+                <tr key={idx} className="border-b">
+                  <td className="p-2">{item.name}</td>
+                  <td className="p-2">{item.price.toLocaleString()}</td>
+                  <td className="p-2">
+                    <Button size="sm" variant="destructive" onClick={() => handleDelete(idx)}>Delete</Button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </CardContent>
     </Card>
   );

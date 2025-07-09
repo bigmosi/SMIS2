@@ -51,30 +51,32 @@ export default function SupplierInvoicesSection() {
             </DialogContent>
           </Dialog>
         </div>
-        <table className="w-full text-sm mb-4">
-          <thead>
-            <tr className="border-b">
-              <th className="text-left p-2 font-medium">Supplier</th>
-              <th className="text-left p-2 font-medium">Item</th>
-              <th className="text-left p-2 font-medium">Quantity</th>
-              <th className="text-left p-2 font-medium">Total</th>
-              <th className="text-left p-2 font-medium">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {invoices.map((inv, idx) => (
-              <tr key={idx} className="border-b">
-                <td className="p-2">{inv.supplier}</td>
-                <td className="p-2">{inv.item}</td>
-                <td className="p-2">{inv.quantity}</td>
-                <td className="p-2">{inv.total.toLocaleString()}</td>
-                <td className="p-2">
-                  <Button size="sm" variant="destructive" onClick={() => handleDelete(idx)}>Delete</Button>
-                </td>
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm mb-4 min-w-[600px]">
+            <thead>
+              <tr className="border-b">
+                <th className="text-left p-2 font-medium">Supplier</th>
+                <th className="text-left p-2 font-medium">Item</th>
+                <th className="text-left p-2 font-medium">Quantity</th>
+                <th className="text-left p-2 font-medium">Total</th>
+                <th className="text-left p-2 font-medium">Actions</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {invoices.map((inv, idx) => (
+                <tr key={idx} className="border-b">
+                  <td className="p-2">{inv.supplier}</td>
+                  <td className="p-2">{inv.item}</td>
+                  <td className="p-2">{inv.quantity}</td>
+                  <td className="p-2">{inv.total.toLocaleString()}</td>
+                  <td className="p-2">
+                    <Button size="sm" variant="destructive" onClick={() => handleDelete(idx)}>Delete</Button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </CardContent>
     </Card>
   );

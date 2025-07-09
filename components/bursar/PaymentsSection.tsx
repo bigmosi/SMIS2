@@ -42,7 +42,7 @@ export default function PaymentsSection() {
           </Button>
         </div>
         <div className="overflow-x-auto">
-          <table className="w-full text-sm">
+          <table className="w-full text-sm min-w-[700px]">
             <thead>
               <tr className="border-b">
                 <th className="text-left p-4 font-medium">Student</th>

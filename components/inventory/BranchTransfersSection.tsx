@@ -56,29 +56,31 @@ export default function BranchTransfersSection() {
             </DialogContent>
           </Dialog>
         </div>
-        <table className="w-full text-sm mb-4">
-          <thead>
-            <tr className="border-b">
-              <th className="text-left p-2 font-medium">Item</th>
-              <th className="text-left p-2 font-medium">Quantity</th>
-              <th className="text-left p-2 font-medium">Branch</th>
-              <th className="text-left p-2 font-medium">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {transfers.map((t, idx) => (
-              <tr key={idx} className="border-b">
-                <td className="p-2">{t.item}</td>
-                <td className="p-2">{t.quantity}</td>
-                <td className="p-2">{t.branch}</td>
-                <td className="p-2 space-x-2">
-                  <Button size="sm" variant="outline" onClick={() => handlePrint(idx)} disabled={printing === idx}>{printing === idx ? 'Printing...' : 'Print Note'}</Button>
-                  <Button size="sm" variant="destructive" onClick={() => handleDelete(idx)}>Delete</Button>
-                </td>
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm mb-4 min-w-[600px]">
+            <thead>
+              <tr className="border-b">
+                <th className="text-left p-2 font-medium">Item</th>
+                <th className="text-left p-2 font-medium">Quantity</th>
+                <th className="text-left p-2 font-medium">Branch</th>
+                <th className="text-left p-2 font-medium">Actions</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {transfers.map((t, idx) => (
+                <tr key={idx} className="border-b">
+                  <td className="p-2">{t.item}</td>
+                  <td className="p-2">{t.quantity}</td>
+                  <td className="p-2">{t.branch}</td>
+                  <td className="p-2 space-x-2">
+                    <Button size="sm" variant="outline" onClick={() => handlePrint(idx)} disabled={printing === idx}>{printing === idx ? 'Printing...' : 'Print Note'}</Button>
+                    <Button size="sm" variant="destructive" onClick={() => handleDelete(idx)}>Delete</Button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </CardContent>
     </Card>
   );

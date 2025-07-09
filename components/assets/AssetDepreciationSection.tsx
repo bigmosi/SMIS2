@@ -28,30 +28,32 @@ export default function AssetDepreciationSection() {
         <CardDescription>Manage and view asset depreciation.</CardDescription>
       </CardHeader>
       <CardContent>
-        <table className="w-full text-sm mb-4">
-          <thead>
-            <tr className="border-b">
-              <th className="text-left p-2 font-medium">Asset</th>
-              <th className="text-left p-2 font-medium">Cost</th>
-              <th className="text-left p-2 font-medium">Purchase Date</th>
-              <th className="text-left p-2 font-medium">Years</th>
-              <th className="text-left p-2 font-medium">Depreciation Rate (%)</th>
-              <th className="text-left p-2 font-medium">Current Value</th>
-            </tr>
-          </thead>
-          <tbody>
-            {demoAssets.map((a, idx) => (
-              <tr key={idx} className="border-b">
-                <td className="p-2">{a.asset}</td>
-                <td className="p-2">{a.cost.toLocaleString()}</td>
-                <td className="p-2">{a.purchaseDate}</td>
-                <td className="p-2">{a.years}</td>
-                <td className="p-2">{a.rate}</td>
-                <td className="p-2">{calcDepreciation(a.cost, a.years, a.rate).toLocaleString()}</td>
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm mb-4 min-w-[600px]">
+            <thead>
+              <tr className="border-b">
+                <th className="text-left p-2 font-medium">Asset</th>
+                <th className="text-left p-2 font-medium">Cost</th>
+                <th className="text-left p-2 font-medium">Purchase Date</th>
+                <th className="text-left p-2 font-medium">Years</th>
+                <th className="text-left p-2 font-medium">Depreciation Rate (%)</th>
+                <th className="text-left p-2 font-medium">Current Value</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {demoAssets.map((a, idx) => (
+                <tr key={idx} className="border-b">
+                  <td className="p-2">{a.asset}</td>
+                  <td className="p-2">{a.cost.toLocaleString()}</td>
+                  <td className="p-2">{a.purchaseDate}</td>
+                  <td className="p-2">{a.years}</td>
+                  <td className="p-2">{a.rate}</td>
+                  <td className="p-2">{calcDepreciation(a.cost, a.years, a.rate).toLocaleString()}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
         <Button onClick={handleDownload} disabled={downloading} variant="outline">
           <Download className="h-4 w-4 mr-2" />
           {downloading ? 'Downloading...' : 'Download Report'}

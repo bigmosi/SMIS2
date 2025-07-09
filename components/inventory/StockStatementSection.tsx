@@ -34,26 +34,28 @@ export default function StockStatementSection() {
             ))}
           </select>
         </div>
-        <table className="w-full text-sm mb-4">
-          <thead>
-            <tr className="border-b">
-              <th className="text-left p-2 font-medium">Date</th>
-              <th className="text-left p-2 font-medium">Type</th>
-              <th className="text-left p-2 font-medium">Quantity</th>
-              <th className="text-left p-2 font-medium">Reference</th>
-            </tr>
-          </thead>
-          <tbody>
-            {statement.map((row, idx) => (
-              <tr key={idx} className="border-b">
-                <td className="p-2">{row.date}</td>
-                <td className="p-2">{row.type}</td>
-                <td className="p-2">{row.qty}</td>
-                <td className="p-2">{row.ref}</td>
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm mb-4 min-w-[600px]">
+            <thead>
+              <tr className="border-b">
+                <th className="text-left p-2 font-medium">Date</th>
+                <th className="text-left p-2 font-medium">Type</th>
+                <th className="text-left p-2 font-medium">Quantity</th>
+                <th className="text-left p-2 font-medium">Reference</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {statement.map((row, idx) => (
+                <tr key={idx} className="border-b">
+                  <td className="p-2">{row.date}</td>
+                  <td className="p-2">{row.type}</td>
+                  <td className="p-2">{row.qty}</td>
+                  <td className="p-2">{row.ref}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </CardContent>
     </Card>
   );

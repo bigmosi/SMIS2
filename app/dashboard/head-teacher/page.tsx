@@ -243,7 +243,7 @@ export default function HeadTeacherDashboard() {
                 </CardHeader>
                 <CardContent>
                   <div className="overflow-x-auto">
-                    <table className="w-full text-sm border rounded-lg">
+                    <table className="w-full text-sm border rounded-lg min-w-[600px]">
                       <thead className="bg-blue-50">
                         <tr>
                           <th className="text-left p-3 font-semibold">Class</th>
@@ -372,24 +372,26 @@ export default function HeadTeacherDashboard() {
                   <CardDescription>Overview of subjects and assigned teachers</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <Table>
-                    <TableHeader>
-                      <TableRow>
-                        <TableHead>Subject</TableHead>
-                        <TableHead>Teacher</TableHead>
-                        <TableHead>Class</TableHead>
-                      </TableRow>
-                    </TableHeader>
-                    <TableBody>
-                      {subjects.map((subject, idx) => (
-                        <TableRow key={idx}>
-                          <TableCell>{subject.subject}</TableCell>
-                          <TableCell>{subject.teacher}</TableCell>
-                          <TableCell>{subject.class}</TableCell>
+                  <div className="overflow-x-auto">
+                    <Table className="min-w-[500px]">
+                      <TableHeader>
+                        <TableRow>
+                          <TableHead>Subject</TableHead>
+                          <TableHead>Teacher</TableHead>
+                          <TableHead>Class</TableHead>
                         </TableRow>
-                      ))}
-                    </TableBody>
-                  </Table>
+                      </TableHeader>
+                      <TableBody>
+                        {subjects.map((subject, idx) => (
+                          <TableRow key={idx}>
+                            <TableCell>{subject.subject}</TableCell>
+                            <TableCell>{subject.teacher}</TableCell>
+                            <TableCell>{subject.class}</TableCell>
+                          </TableRow>
+                        ))}
+                      </TableBody>
+                    </Table>
+                  </div>
                 </CardContent>
               </Card>
 
@@ -401,7 +403,7 @@ export default function HeadTeacherDashboard() {
                 </CardHeader>
                 <CardContent>
                   <div className="overflow-x-auto">
-                    <table className="w-full text-sm border">
+                    <table className="w-full text-sm border min-w-[700px]">
                       <thead>
                         <tr>
                           <th className="p-2 border">Time</th>

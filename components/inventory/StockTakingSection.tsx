@@ -25,22 +25,24 @@ export default function StockTakingSection() {
         <Button onClick={handleTakeStock} disabled={taken} className="mb-4">
           {taken ? 'Stock Taken!' : 'Take Stock Now'}
         </Button>
-        <table className="w-full text-sm mb-4">
-          <thead>
-            <tr className="border-b">
-              <th className="text-left p-2 font-medium">Item</th>
-              <th className="text-left p-2 font-medium">Counted</th>
-            </tr>
-          </thead>
-          <tbody>
-            {demoStock.map((row, idx) => (
-              <tr key={idx} className="border-b">
-                <td className="p-2">{row.item}</td>
-                <td className="p-2">{row.counted}</td>
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm mb-4 min-w-[400px]">
+            <thead>
+              <tr className="border-b">
+                <th className="text-left p-2 font-medium">Item</th>
+                <th className="text-left p-2 font-medium">Counted</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {demoStock.map((row, idx) => (
+                <tr key={idx} className="border-b">
+                  <td className="p-2">{row.item}</td>
+                  <td className="p-2">{row.counted}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
         {taken && <div className="text-green-600 font-semibold">Stock taking completed successfully!</div>}
       </CardContent>
     </Card>

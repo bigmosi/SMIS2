@@ -75,7 +75,7 @@ export default function StudentRegisterSection() {
           </Dialog>
         </div>
         <div className="overflow-x-auto">
-          <table className="w-full text-sm mb-4">
+          <table className="w-full text-sm min-w-[800px]">
             <thead>
               <tr className="border-b">
                 <th className="text-left p-2 font-medium">Photo</th>

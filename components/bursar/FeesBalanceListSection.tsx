@@ -16,7 +16,7 @@ export default function FeesBalanceListSection() {
         <CardDescription>List of students with outstanding balances.</CardDescription>
       </CardHeader>
       <CardContent>
-        <table className="w-full text-sm mb-4">
+        <table className="w-full text-sm mb-4 min-w-[400px]">
           <thead>
             <tr className="border-b">
               <th className="text-left p-2 font-medium">Student</th>

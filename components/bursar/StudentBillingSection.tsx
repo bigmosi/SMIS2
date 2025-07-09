@@ -46,7 +46,7 @@ export default function StudentBillingSection() {
             </DialogContent>
           </Dialog>
         </div>
-        <table className="w-full text-sm mb-4">
+        <table className="w-full text-sm mb-4 min-w-[500px]">
           <thead>
             <tr className="border-b">
               <th className="text-left p-2 font-medium">Student</th>

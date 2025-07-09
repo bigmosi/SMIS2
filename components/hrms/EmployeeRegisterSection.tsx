@@ -60,7 +60,7 @@ export default function EmployeeRegisterSection() {
             </DialogContent>
           </Dialog>
         </div>
-        <table className="w-full text-sm mb-4">
+        <table className="w-full text-sm mb-4 min-w-[700px]">
           <thead>
             <tr className="border-b">
               <th className="text-left p-2 font-medium">Name</th>
