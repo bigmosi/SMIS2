@@ -97,7 +97,10 @@ export default function BursarDashboard() {
                 key={index}
                 variant={activeSection === item.label ? "default" : "ghost"}
                 className={`w-full justify-start ${activeSection === item.label ? 'bg-green-500 text-white' : 'text-gray-700'}`}
-                onClick={() => setActiveSection(item.label)}
+                onClick={() => {
+                  setActiveSection(item.label);
+                  setSidebarOpen(false);
+                }}
               >
                 <item.icon className="h-5 w-5 mr-3" />
                 {item.label}
