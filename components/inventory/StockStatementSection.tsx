@@ -17,7 +17,7 @@ const demoStatements = {
 
 export default function StockStatementSection() {
   const [selected, setSelected] = useState('Printer Paper');
-  const statement = demoStatements[selected] || [];
+  const statement = demoStatements[selected as keyof typeof demoStatements] || [];
 
   return (
     <Card>
@@ -30,7 +30,7 @@ export default function StockStatementSection() {
           <label className="block text-sm font-medium mb-1">Select Item:</label>
           <select className="w-full border rounded p-2" value={selected} onChange={e => setSelected(e.target.value)}>
             {Object.keys(demoStatements).map(item => (
-              <option key={item} value={item}>{item}</option>
+              <option key={String(item)} value={String(item)}>{String(item)}</option>
             ))}
           </select>
         </div>
