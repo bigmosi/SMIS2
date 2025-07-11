@@ -19,44 +19,47 @@ export default function Login() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
 
-  // Demo user credentials with their roles
-  const demoUsers = {
-    'admin@school.edu': { password: 'admin123', role: 'admin', name: 'System Administrator' },
-    'bursar@school.edu': { password: 'bursar123', role: 'bursar', name: 'Finance Manager' },
-    'headteacher@school.edu': { password: 'head123', role: 'head-teacher', name: 'Head Teacher' },
-    'teacher@school.edu': { password: 'teacher123', role: 'teacher', name: 'Mathematics Teacher' },
-    'parent@gmail.com': { password: 'parent123', role: 'parent', name: 'Parent Portal' },
-    'hrms@school.edu': { password: 'hrms123', role: 'hrms', name: 'HR Manager' },
-    'inventory@school.edu': { password: 'inventory123', role: 'inventory', name: 'Inventory Manager' },
-    'asset@school.edu': { password: 'asset123', role: 'assets', name: 'Asset Manager' },
-  };
-
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
     setError('');
     
-    // Simulate authentication process
-    setTimeout(() => {
-      const user = demoUsers[email as keyof typeof demoUsers];
-      
-      if (user && user.password === password) {
+    try {
+      const response = await fetch('http://localhost:5000/api/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email,
+          password
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        // Check if user and role exist in response
+        if (!data.user || !data.user.role) {
+          throw new Error('User role not provided in response');
+        }
+        
+        // Store token in localStorage or cookies
+        localStorage.setItem('authToken', data.token);
+        localStorage.setItem('user', JSON.stringify(data.user));
+        
         // Successful login - redirect to appropriate dashboard
-        window.location.href = `/dashboard/${user.role}`;
+        window.location.href = `/dashboard/${data.user.role}`;
       } else {
         // Invalid credentials
-        setError('Invalid email or password. Please try again.');
-        setIsLoading(false);
+        setError(data.message || 'Invalid email or password. Please try again.');
       }
-    }, 1000);
+    } catch (err) {
+      setError(err.message || 'Network error. Please try again later.');
+      } finally {
+      setIsLoading(false);
+    }
   };
-
-  const useDemoCredentials = (userEmail: string) => {
-    setEmail(userEmail);
-    setPassword(demoUsers[userEmail as keyof typeof demoUsers].password);
-    setError('');
-  };
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-slate-50 flex items-center justify-center p-4">
       <div className="w-full max-w-md">
@@ -157,28 +160,7 @@ export default function Login() {
               </Button>
             </form>
 
-            {/* Demo Credentials */}
-            <div className="mt-6 p-4 bg-gray-50 rounded-lg">
-              <p className="text-sm text-gray-600 mb-3 font-medium">Demo Accounts:</p>
-              <div className="space-y-2">
-                {Object.entries(demoUsers).map(([userEmail, userData]) => (
-                  <div key={userEmail} className="flex items-center justify-between p-2 bg-white rounded border">
-                    <div className="text-xs">
-                      <p className="font-medium text-gray-900">{userData.name}</p>
-                      <p className="text-gray-500">{userEmail}</p>
-                    </div>
-                    <Button 
-                      variant="outline" 
-                      size="sm" 
-                      onClick={() => useDemoCredentials(userEmail)}
-                      className="text-xs"
-                    >
-                      Use
-                    </Button>
-                  </div>
-                ))}
-              </div>
-            </div>
+            {/* Removed demo credentials section since we're using real API */}
           </CardContent>
         </Card>
 
